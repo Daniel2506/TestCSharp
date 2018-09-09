@@ -1,0 +1,23 @@
+{
+  "name": "VideoGameJS",
+  "version": "1.0.0",
+  "description": "VideoGameJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel2506/VideoGameJS.git"
+  },
+  "keywords": [],
+  "author": "Daniel2506",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel2506/VideoGameJS/issues"
+  },
+  "homepage": "https://github.com/Daniel2506/VideoGameJS#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
