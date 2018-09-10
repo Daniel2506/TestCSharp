@@ -54,7 +54,7 @@ class Dinosaur extends Dummy {
         this.h = 106;
         this.y = floor - this.h;
         this.img = document.createElement("img");
-        this.img.src = "img/trex.png";
+        this.img.src = "img/Ballena_azul.png";
     }
     draw(){
         ctx.drawImage(this.img, this.x, this.y);

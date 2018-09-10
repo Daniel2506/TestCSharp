@@ -1,10 +1,11 @@
 
 canvas {
     border: 1px solid;
+    background-image: url('../../public/img/Fondo.png');
 }
 #content {
     position: relative;
-    width: 600px;
+    width: 800px;
     height: 300px;
 }
 #modal {
