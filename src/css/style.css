@@ -7,6 +7,7 @@ canvas {
     position: relative;
     width: 800px;
     height: 300px;
+    align-items: center;
 }
 #modal {
     position: absolute;
