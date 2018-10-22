@@ -9,6 +9,9 @@ var ctx = canvas.getContext("2d");
 var ancho = canvas.width;
 var alto = canvas.height;
 var modal = document.getElementById("modal");
+var sencibilizacion = document.getElementById("sensibilizacion");
+
+var array_img = ['imagenes/frase_4.png', 'imagenes/frase_3.png', 'imagenes/frase_2.png', 'imagenes/frase_2.1.png', 'imagenes/frase_1.1.png'];
 
 //Clases
 class Objeto {
@@ -32,7 +35,7 @@ class Mundo {
 		this.espacio = 32;
 		this.img = document.createElement("img");
 		this.img.src = "imagenes/mundo.png";
-		
+
 		/*this.imgNube = document.createElement("img");
 		this.imgNube.src = "imagenes/nube.png";*/
 		this.nx = 350;
@@ -61,19 +64,19 @@ class Dinosaurio extends Objeto {
 	constructor(){
 		super();
 		this.x = 35;
-		this.w = 100;
-		this.h = 116;
+		this.w = 50;
+		this.h = 100;
 		this.y = superficie-this.h;
 		this.img.src = "imagenes/Ballena_azul.png";
-		
+
 		this.techo = this.y;
 		this.fondo = this.y+this.h-15;
-		
+
 		this.bordeDerecha = 30;
 		this.bordeIzquierda = 50;
 		this.derecha = this.x+this.w-this.bordeDerecha;
 		this.izquierda = this.x+this.bordeIzquierda;
-		
+
 	}
 	dibujar(){
 		ctx.drawImage(this.img, this.x, this.y);
@@ -101,7 +104,7 @@ class Cactus extends Objeto {
 		this.d = this.generar(this.dmin, this.dmax);
 		this.siguiente = null;
 		this.img.src = "imagenes/Botella.png";
-		
+
 		this.techo = this.y;
 		this.fondo = this.y+this.h;
 		this.derecha = this.x+this.w;
@@ -145,7 +148,7 @@ class Tiempo {
 		this.tiempo = 0;
 		this.limite = 1000;
 		this.intervalo = 1000/velocidad;
-		
+
 		this.sonido = document.createElement("audio");
 		this.sonido.src = "imagenes/aviso.mp3";
 	}
@@ -153,7 +156,7 @@ class Tiempo {
 		ctx.font = "25px Arial";
 		ctx.fillText(this.nivel.toString(), 550, 40);
 	}
-	
+
 	tick(){
 		this.tiempo+=this.intervalo;
 		this.nivel++;
@@ -168,7 +171,7 @@ class Tiempo {
 			bucle = setInterval("frame()", velocidad);
 		}
 	}
-	
+
 }
 //Objetos
 var mundo = new Mundo();
@@ -213,16 +216,25 @@ function saltar(event){
 	}
 }
 function findeJuego(){
+
+
 	clearInterval(bucle);
 	modal.style.display = "block";
+	sencibilizacion.style.display = "block";
+	var choose_img = Math.floor((Math.random() * array_img.length));
+
 	document.getElementById("imgbtn").src = "imagenes/Reiniciar.png";
+	document.getElementById("img_sensibilizacion").src = array_img[choose_img];
+	document.getElementById("boton").style.top = "80%";
+	document.getElementById("boton").style.left = "20%";
+
 	mundo = new Mundo();
 	rex = new Dinosaurio();
 	velocidad = 50;
 	velocidadSalto = 25;
 	cactus = new Cactus(600);
 	for(i=0;i<=ncactus;i++){
-	cactus.agregar();
+		cactus.agregar();
 	}
 }
 function choqueCactus(){
@@ -263,4 +275,3 @@ function iniciar(){
 	bucle = setInterval("frame()", velocidad);
 	tiempo = new Tiempo();
 }
-
